@@ -1,9 +1,3 @@
-PALANIAPPAN R - 2021B4AA2915H
-MANAN GUPTA - 2021A7PS2091H
-KUSH AGRAWAL - 2021A7PS0142H
-VAMSI KRISHNA GATTUPALLI - 2021A7PS0040H
-RAJASEE KAR - 2021A8PS2907H
-
 # DrugChain
 
 DrugChain is a blockchain designed to keep track of valid/verified drugs. Each transaction in a block is a `Drug Name` - `Manufacturer ID Pair`.
