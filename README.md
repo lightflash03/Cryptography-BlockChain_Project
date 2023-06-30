@@ -7,18 +7,18 @@ These parameters can be changed in the `src/blockchain.ts` file. Run `tsc` in th
 
 The blockchain uses a Discrete Log ZKP to verify drugs. This is done as follows,
 
-`p` is a large prime and `g` is its generator
+$p$ is a large prime and $g$ is its generator
 
-A drug (with ID `x`) is sent to an trusted body for verification. After verifying the drug, `y = g^x mod(p)` is calculated and published.
+A drug (with ID $x$) is sent to an trusted body for verification. After verifying the drug, $y = g^x mod(p)$ is calculated and published.
 
 When an external verifier wants to verify if a drug is legitimate, they should be able to do so without actually knowing the drug's unique ID.
 
 To accomplish this, we use the following Zero Knowledge Proof,
 
- - A random number between `0` and `p - 1` is chosen and `h = g^x mod (p)` is calculated
- - `h` is sent to the verifier. The verifier then send a random bit `b` (0/1)
- - `s = (r + bx) mod(p - 1)` is calculated and sent to the verifier
- - The verifier checks if , `g^s mod (p)` equals `hy^b mod(p)`
+ - A random number between $0$ and $p - 1$ is chosen and $h = g^x mod (p)$ is calculated
+ - $h$ is sent to the verifier. The verifier then send a random bit $b$ (0/1)
+ - $s = (r + bx) mod(p - 1)$ is calculated and sent to the verifier
+ - The verifier checks if , $g^s mod (p)$ equals $hy^b mod(p)$
  - This is done for multiple rounds (50 by default in our case). If the equality check fails once, then the drugID is not valid
 
 Thus, we are able to verify a drugID without actually sending the drugID to the verifier
